@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Gray background for the blog container */
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding a subtle box shadow */
+}
+
+
+.blog-title {
+    color: #ff9800; /* Dark yellow color for the title */
+}
+.Title{
+    width: 40%;
+}
+
+.view-blogs-btn,
+.add-blog-btn
+
+ {
+    background-color:  #ff9800;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.upload-picture-btn{
+    background-color: white;
+    height: 50px;
+    color:black;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.upload-btn{
+    background-color: white;
+    height: 50px;
+    width: 20%;
+    color:#3276E8;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.add-blog-final-btn{
+    background-color:  #ff9800;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.upload-picture-btn span {
+    margin-right: 12px;
+}
+
+
+.add-blog-container {
+    background-color: #F0F0F6; /* Gray background for the add blog container */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.blog-form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.upload-complete-btn{
+    background-color:  #ff9800;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 30%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.upload-complete-btn {
+    margin-left: auto;
+}
+ .imagerecon{
+    height: 14px;
+ }

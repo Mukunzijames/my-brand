@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./Dashboard.css" />
+    <link rel="stylesheet" href="./AddBlog.css" />
+    <title>Responsive Sidebar</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="icon-container">
+        <span class="notification-icon"></span>
+        <span class="person-icon"
+          ><i class="material-icons">person</i
+          ><i class="material-icons notifications">notifications</i></span
+        >
+      </div>
+      <center>
+        <img
+          src="/my-brand/image/profile.png"
+          alt="Profile Image"
+          class="profile-image"
+        />
+      </center>
+      <ul>
+        <li>Dashboard</li>
+        <li class="active">Blogs</li>
+        <li>Portfolio</li>
+        <li>My Service</li>
+        <li class="application">Application</li>
+        <li><i class="material-icons">calendar_today</i> Calendar</li>
+        <li><i class="material-icons">contacts</i> Contact</li>
+        <li><i class="material-icons">inbox</i> Mailbox</li>
+        <li><i class="material-icons">assignment</i> Tasks</li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <!-- Your main content goes here -->
+      <div class="blog-container">
+        <h1 class="blog-title">Add Blogs</h1>
+        <button class="add-blog-btn">20 Blogs</button>
+        <div class="add-blog-container">
+          <form class="blog-form">
+            <label for="blogTitle">Title:</label>
+            <div>
+              <input
+                type="text"
+                id="blogTitle"
+                name="blogTitle"
+                class="Title"
+                required
+              />
+            </div>
+
+            <label for="blogDescription">Description:</label>
+            <textarea
+              id="blogDescription"
+              name="blogDescription"
+              rows="6"
+              required
+            ></textarea>
+
+            <div>
+              <button class="upload-picture-btn">
+                <img
+                  src="./assets/image-plus.png"
+                  class="imagerecon"
+                  alt=""
+                /><span>Click To Upload</span>
+              </button>
+
+              <button class="upload-btn">
+                Upload Complete
+                <span
+                  ><img src="./assets/elements.png" class="imagerecon" alt=""
+                /></span>
+              </button>
+            </div>
+            <center>
+              <button class="add-blog-final-btn">Upload Image</button>
+            </center>
+            <center>
+              <button class="upload-complete-btn">Add Blog</button>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
