@@ -65,3 +65,25 @@ li.active {
     padding: 20px;
    
 }
+.buttons {
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+.cars {
+   height: 30px; 
+}
+.homes {
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: #ff9800;
+    border: none;
+}
+.logouts {
+    padding-left: 63px;
+    padding-right: 63px;
+    color: #ff9800;
+    border: 2px solid #ff9800 ;
+    background-color: white;
+    border-radius: 7px;
+}
