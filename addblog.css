@@ -110,3 +110,7 @@ textarea {
  .imagerecon{
     height: 14px;
  }
+ .add-blog-btn a {
+    text-decoration: none;
+    color: white;
+ }
