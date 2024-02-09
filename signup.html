@@ -7,27 +7,45 @@
     <title>Signup</title>
   </head>
   <body>
-    <div class="signup-container">
+    
+    <div class="signup-container" id="signup-container">
+      <canvas id="confetti"></canvas>
       <div class="heading-h">
         <p>Have a question about this product</p>
       </div>
 
       <h2>Signup</h2>
 
-      <form action="#" method="post">
+      <form onsubmit="return validateForm()" class="sss">
+        <small id="nameErrorsssss"></small>
         <label for="Username">Username:</label>
-        <input type="username" id="username" name="username" required />
+        <input type="text" id="username" name="username" onkeyup="return changes()" />
+        <small id="clas" class="xx"></small>
+
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <input type="text" id="email" name="email" onkeyup="return changes()"/>
+        <small id="classs" class="xx"></small>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input type="text" id="password" name="password" onkeyup="return changes()" />
+        <small id="class" class="xx"></small>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" id="submit">Sign Up</button>
       </form>
       <div class="">
         <p>Already Have Account ? </p> <a href="login.html">Sign in</a>
       </div>
     </div>
+    <div id="success-message" style="display: none;">
+      <h2 class="reg">Registration Successful!</h2>
+      <p class="yous">Your account has been successfully registered.</p>
+      <a href="login.html" class="cnt">Continue to Sign In</a>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+    <script src="signup.js">
+
+    </script>
   </body>
 </html>

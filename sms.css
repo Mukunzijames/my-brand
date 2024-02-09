@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Tajawal:wght@300&display=swap");
+* {
+    font-family: roboto;
+}
+body {
+    background-color: #f0f0f6;
+    margin-left: 400px;
+    margin-top: 100px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card1 {
+display: flex;
+height: 20px;
+background-color: white;
+width: 45%;
+justify-content: space-between;
+}
+.rights {
+    display: flex;
+    gap: 5px;   
+}
+.bb {
+    padding-top: 2px;
+    padding-left: 6px;
+    color: #ff9800;
+}
+.sms {
+    font-size: small;
+    padding-top: 2px;
+}
+.add {
+    padding-right: 6px;
+    color: #ff9800;
+}
+
+.card3 {
+
+display: flex;
+height: 20px;
+background-color: white;
+width: 30%;
+justify-content: space-between;
+
+}
+.rgt {
+   margin-top: 30px; 
+   display: flex;
+   gap: 3px;
+}
+.delete {
+background-color: white;
+color: #ff9800;
+height: 20px;
+}
+.edit {
+    background-color: white;
+    width: 40px;
+    padding-left: 10px;
+    color: #ff9800;
+    height: 20px;
+}
+.toggle {
+    color: #ff9800;
+    width: 28px;
+    background-color: white;
+    height: 20px;
+}
+.ds {
+    padding-left: 6px;
+    padding-top: 2px;
+
+}
+.lefs {
+    margin-top: 2px;
+    display: flex;
+    height: 20px;
+    background-color: white;
+    width: 45%;
+    justify-content: space-between;
+    font-size: small;
+    padding-top: 5px;
+}
+.lessss {
+    padding-left: 6px;
+}
+.rightsss {
+    padding-right: 6px;
+    
+}
+.rightsss p{
+ margin-top: 0;
+}

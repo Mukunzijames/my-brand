@@ -19,14 +19,14 @@
         <h4 class="min"> 2 min read</h4>
     </div>
     <div class="imago">
-        <img src="/my-brand/image/Rectangle 182.png" alt="">
+        <img src="/my-brand/image/Rectangle 182.png" alt="" id="imago">
     </div>
     <div class="container">
         <div class="left">
-            <h1>Lorem ipsum dolor sit amet,<br> 
+            <h1 id="title">Lorem ipsum dolor sit amet, 
 
                 consectetur adipiscing elit.</h1>
-                <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo rem quos vel, reiciendis minima ut necessitatibus nostrum similique officiis eveniet alias nobis aliquid? Modi veniam voluptatibus libero est aliquam laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex optio magni inventore aspernatur repellendus ullam pariatur quidem minus quis nisi iure, quas ab, perferendis voluptate placeat earum eius animi tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam vel natus illum fugiat repellat a quas dolore nulla quis nam, omnis esse nostrum non velit, at, blanditiis odit? Voluptatum, ipsa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione exercitationem assumenda ipsum accusantium nulla placeat minima sunt a excepturi dignissimos porro, beatae laudantium, nisi corrupti quibusdam aspernatur dolorem nesciunt dolores. sit amet consectetur adipisicing elit. Quam nesciunt similique, id eum reiciendis nemo. Ex vero temporibus natus. Eos ab ducimus iste hic repudiandae delectus accusamus vero temporibus voluptas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis beatae officiis quasi quis cum eum architecto vitae reiciendis, labore quaerat minus nesciunt. Aliquam dolores sint ab perspiciatis expedita, accusantium animi.</p>
+                <p id="Description"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo rem quos vel, reiciendis minima ut necessitatibus nostrum similique officiis eveniet alias nobis aliquid? Modi veniam voluptatibus libero est aliquam laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex optio magni inventore aspernatur repellendus ullam pariatur quidem minus quis nisi iure, quas ab, perferendis voluptate placeat earum eius animi tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam vel natus illum fugiat repellat a quas dolore nulla quis nam, omnis esse nostrum non velit, at, blanditiis odit? Voluptatum, ipsa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione exercitationem assumenda ipsum accusantium nulla placeat minima sunt a excepturi dignissimos porro, beatae laudantium, nisi corrupti quibusdam aspernatur dolorem nesciunt dolores. sit amet consectetur adipisicing elit. Quam nesciunt similique, id eum reiciendis nemo. Ex vero temporibus natus. Eos ab ducimus iste hic repudiandae delectus accusamus vero temporibus voluptas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis beatae officiis quasi quis cum eum architecto vitae reiciendis, labore quaerat minus nesciunt. Aliquam dolores sint ab perspiciatis expedita, accusantium animi.</p>
         </div>
         <div class="right">
             <h6>popular post</h6>
@@ -97,5 +97,15 @@
        
       </div>
     </div>
+    <script>
+
+        if (localStorage.getItem('blog')) {
+            const fetchingData = JSON.parse(localStorage.getItem('blog'))
+            console.log(fetchingData)
+        document.getElementById('title').innerText =fetchingData.title;
+        document.getElementById('Description').innerHTML =fetchingData.decsription
+        document.getElementById('imago').setAttribute("src",fetchingData.image)
+        }
+    </script>
 </body>
 </html>

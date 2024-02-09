@@ -65,6 +65,9 @@ li.active {
     padding: 20px;
    
 }
+#update {
+    margin-right: 240px;
+}
 .buttons {
     display: flex;
     justify-content: end;
@@ -86,4 +89,8 @@ li.active {
     border: 2px solid #ff9800 ;
     background-color: white;
     border-radius: 7px;
+}
+.desr {
+    width: 100%;
+    overflow-x: scroll;
 }

@@ -9,15 +9,22 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="#" method="post">
+        <form id="sss" onsubmit="return validateForm()">
+            <small id="nameErrorsssss"></small>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email"  onkeyup="return changes()">
+            <small id="classs" class="xx"></small>
+
+            
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password"  onkeyup="return changes()">
+            <small id="class" class="xx"></small>
+
 
             <button type="submit"><a href="dashboard.html">Sign in</a></button>
         </form>
     </div>
+    <script src="login.js"></script>
 </body>
 </html>

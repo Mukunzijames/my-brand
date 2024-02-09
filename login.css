@@ -39,10 +39,12 @@ input {
     padding: 10px;
     margin-bottom: 16px;
     box-sizing: border-box;
-    border: 1px solid #ffc107; /* Yellow border */
+    border: 1px solid #ffc107; 
     border-radius: 4px;
 }
-
+.xx {
+    color: red;
+}
 button {
     background-color: #ffc107;
     color: #000000f3;
@@ -62,3 +64,15 @@ a {
     text-decoration: none;
     color: #141313;
 }
+.error {
+    color: #ff9800;
+    padding: 5px;
+    display: none;
+  }
+  .error.display-error {
+    display: block;
+    margin-top: 2px;
+    transform: translatey(-10px);
+    color: #050b15;
+  }
+  

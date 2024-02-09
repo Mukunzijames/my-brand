@@ -23,77 +23,132 @@
             <div class="ico liss"><i class='bx bx-book-content'></i></div>
             <div class="ico"><i class='bx bx-chat'></i></div>
         </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
+        <div id="bloglists">
+            <!-- <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
             </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
             </div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
+            </div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
+            </div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
+            </div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div ><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
+            </div>
+            <div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>how to make web template</div>
+                </div>
+                <div class="right">
+                    <div><i class='bx bx-pencil'></i></div>
+                    <div><i class='bx bx-trash'></i></div>
+                </div>
+            </div>
+            </div>
+          </div> -->
         </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        <div class="classs">
-            <div class="left">
-                <div class="check"><i class='bx bxs-check-circle'></i></div>
-                <div>how to make web template</div>
-            </div>
-            <div class="right">
-                <div ><i class='bx bx-pencil'></i></div>
-                <div><i class='bx bx-trash'></i></div>
-            </div>
-        </div>
-        </div>
-      </div>
+      <script>
+      let list = document.getElementById('bloglists');
+      let some = []
+        if (localStorage.getItem('newBlog')) {
+          let  savedData = localStorage.getItem('newBlog')
+          let getData=JSON.parse(savedData);
+          some = getData
+          addlist(some)
+        }
+        
+        function addlist(arr){
+            for (let i= 0; i< arr.length; i++) {
+                console.log(i)
+                const element = `<div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>${arr[i].title}</div>
+                </div>
+                <div class="right">
+                    <div onclick="update(${i})"><i class='bx bx-pencil'></i></div>
+                    <div onclick="Delete(${i})"><i class='bx bx-trash'></i></div>
+                </div>
+            </div>`;
+               list.insertAdjacentHTML("beforeend",element) 
+               
+            }
+        
+        }
+        function refleshList (){
+          let refresh =  document.querySelectorAll('.classs')
+          refresh.forEach(raw => {
+            raw.remove()
+
+          });
+            
+        }
+        function Delete(id){
+            let trash = some
+            trash.splice(id,1)
+            console.log(id)
+        localStorage.setItem('newBlog', JSON.stringify(trash));
+        refleshList()
+        addlist(trash)
+        
+        }
+       
+        function update (id){
+        window.location.href =`dashboard.html?id=${id}`
+        // update
+        
+        }
+        
+      </script>
 </body>
 </html>

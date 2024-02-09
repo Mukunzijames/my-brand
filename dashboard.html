@@ -8,6 +8,12 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+
+    <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
+		<script type="text/javascript" src="richtexteditor/rte.js"></script>
+      <script>RTE_DefaultConfig.url_base='richtexteditor'</script>
+		<script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
+
     <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="addblog.css" />
     <title>Responsive Sidebar</title>
@@ -54,7 +60,8 @@
        </div>
         
         <div class="add-blog-container">
-          <form class="blog-form">
+          <form class="blog-form" id="form" method="post" onsubmit="return validateForm">
+            <small id="nameErrorsssss"></small>
             <label for="blogTitle">Title:</label>
             <div>
               <input
@@ -62,43 +69,145 @@
                 id="blogTitle"
                 name="blogTitle"
                 class="Title"
-                required
+                onkeyup="return changes()"
               />
+              <small id="clas" class="xx"></small>
             </div>
 
-            <label for="blogDescription">Description:</label>
-            <textarea
-              id="blogDescription"
+           
+            <div class="desr">
+               <label for="blogDescription">Description:</label>
+                <textarea
+              id="div_editor1"
               name="blogDescription"
-              rows="6"
-              required
-            ></textarea>
-
-            <div>
-              <button class="upload-picture-btn">
-                <img
-                  src="./assets/image-plus.png"
-                  class="imagerecon"
-                  alt=""
-                /><span>Click To Upload</span>
-              </button>
-
-              <button class="upload-btn">
-                Upload Complete
-                <span
-                  ><img src="./assets/elements.png" class="imagerecon" alt=""
-                /></span>
-              </button>
-            </div>
+              onkeyup="return changes()"
+            >
+          </textarea>
+          <small id="classs" class="xx"></small>
+        </div>
+          
             <center>
-              <button class="add-blog-final-btn">Upload Image</button>
+              <input class="add-blog-final-btn"type="file" id="upload" Upload Image >
             </center>
             <center>
-              <button class="upload-complete-btn">Add Blog</button>
+              <button class="upload-complete-btn" id="create">Add Blog</button>
+            </center>
+            <center>
+              <button class="upload-complete-btn" id="update" >update Blog</button>
             </center>
           </form>
         </div>
       </div>
     </div>
+ 
+    <script>
+
+      var editor1 = new RichTextEditor("#div_editor1");
+
+
+      const form = document.getElementById('form')
+      const buttons =document.querySelectorAll('.upload-complete-btn')
+      const updateButtons = document.getElementById('update')
+      const create = document.getElementById('create')
+
+      updateButtons.style.display ='none'
+      
+      let clickon = ''
+      buttons.forEach(element => {
+        element.addEventListener('click',()=> {
+          clickon =element.id
+          
+        })
+      })
+    let profile = ''
+    
+      //  localStorage.clear()
+
+      form.addEventListener('submit',(e => {
+        e.preventDefault()
+        
+        const blogTitle=document.getElementById('blogTitle').value;
+        const blogDecription=document.getElementById('div_editor1').value;
+        const imageconstant = document.getElementById('upload');
+        const image = imageconstant.files[0]
+
+        if (clickon==="create") {
+          
+        const fileReader = new FileReader()
+        fileReader.addEventListener('load',()=>{
+        profile = fileReader.result
+        
+        let data={
+          title:blogTitle,
+          decsription:blogDecription,
+          image:profile
+          
+        }
+
+        let some = []
+        if (localStorage.getItem('newBlog')) {
+          let  savedData = localStorage.getItem('newBlog')
+          let getData=JSON.parse(savedData);
+          some = getData
+        }
+        some.push(data)
+        localStorage.setItem('newBlog', JSON.stringify(some));
+
+        let savedDatas=localStorage.getItem('newBlog');
+         console.log( JSON.parse(savedDatas));
+        })
+        fileReader.readAsDataURL(image)
+       
+        }else {
+
+          let blogliss = JSON.parse(localStorage.getItem('newBlog'))
+          const Params = new URLSearchParams(window.location.search);
+          const update =Params.get('id');
+          console.log(image)
+
+          if (!image) {
+            blogliss[update].title = blogTitle
+          blogliss[update].decsription=blogDecription
+          localStorage.setItem('newBlog',JSON.stringify(blogliss))
+          window.location.href ='blogli.html'
+          }else {
+              
+        const fileReader = new FileReader()
+        fileReader.addEventListener('load',()=>{
+        profile = fileReader.result
+        blogliss[update].title = blogTitle
+
+          blogliss[update].decsription=blogDecription
+          blogliss[update].image =profile
+          localStorage.setItem('newBlog',JSON.stringify(blogliss))
+          window.location.href ='blogli.html'
+      })
+      fileReader.readAsDataURL(image)
+          }
+          
+        }
+      }))
+    
+// update
+      const searchParams = new URLSearchParams(window.location.search);
+    const updateId=searchParams.get('id');
+    if (updateId) {
+      updateButtons.style.display ='block'
+      create.style.display ='none'
+
+    }
+    if(localStorage.getItem('newBlog')){
+      let storage = JSON.parse(localStorage.getItem('newBlog'))
+      // console.log(storage)
+      let singleBlog = storage[updateId]
+      // console.log(singleBlog)
+      if (singleBlog) {
+        console.log(singleBlog.title)
+        document.getElementById('blogTitle').value =singleBlog.title
+        editor1.setHTML(`${singleBlog.decsription}`)
+      }
+
+    }
+    </script>
   </body>
 </html>

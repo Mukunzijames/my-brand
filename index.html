@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
+  <script type="text/javascript" src="richtexteditor/rte.js"></script>
+    <script>RTE_DefaultConfig.url_base='richtexteditor'</script>
+  <script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
   <title>Document</title>
 </head>
 
@@ -140,6 +145,18 @@
     </section>
     <section class="sec2">
       <div class="home">
+        <i class='bx bx-menu-alt-right menu-icon' id="hamburger-menu"></i>
+        <div class="menu">
+          <i class='bx bx-x menu-icon' id="cancel-icon"></i>
+          <ul id="menu-items">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="">Code</a></li>
+            <li class="menu-item"><a href="">Resume</a></li>
+            <li class="menu-item"><a href="">Portfolio</a></li>
+            <li class="menu-item"><a href="blog.html">Blog</a></li>
+            <li class="menu-item"><a href="signup.html">signup</a></li>
+          </ul>
+        </div>
         <div class="content-head">
           <h2 class="m1"> I'm Mukunzi N.James</h2>
           <h2 class="m2"> <span class="ss">Full-stack </span> Developer</h2>
@@ -152,7 +169,8 @@
       </div>
       <div class="serv-bar">
         <h2 class="my">My Services</h2>
-        <p class="ny-pra">Explicabo asperiores nostrum, deleniti accusantium porro,<br> minus perspiciatis perferendis quisquam dolor
+        <p class="ny-pra">Explicabo asperiores nostrum, deleniti accusantium porro,<br> minus perspiciatis perferendis
+          quisquam dolor
           ea magni commodi, <br>nobis amet debitis adipisci nulla harum sunt suscipit.</p>
         <div class="container-service">
           <div class="web">
@@ -207,7 +225,7 @@
     </section>
     <section class="sec3">
       <ul class="nav-bar-side">
-        <li class="Icon Contrast"><a><img src="/my-brand/image/Contrast.png" /></a></li>
+        <li class="Icon Contrast" onclick="toggleDarkMode()"><a><img src="/my-brand/image/Contrast.png" /></a></li>
         <li class="Icon home-nav"><a><img src="/my-brand/image/Home.png" /></a></li>
         <li class="Icon"><a><img src="/my-brand/image/Service.png" /></a></li>
         <li class="Icon"><a><img src="/my-brand/image/Cv.png" /></a></li>
@@ -229,7 +247,7 @@
         <div class="scho-content">
           <h4>Diploma in Manufacturing Engineering</h4>
           <p class="ccc">Cupiditate a illum quas modi, dolore error. Maiores officia beatae aliquid delectus assumenda,
-            optio odio, unde possimus omnis natus ducimus.  Molestias, ipsa?</p>
+            optio odio, unde possimus omnis natus ducimus. Molestias, ipsa?</p>
         </div>
       </div>
       <div class="iprc">
@@ -240,7 +258,7 @@
         <div class="scho-content">
           <h4>Diploma in Manufacturing Engineering</h4>
           <p class="ccc">Cupiditate a illum quas modi, dolore error. Maiores officia beatae aliquid delectus assumenda,
-            optio odio, unde possimus omnis natus ducimus.  Molestias, ipsa?</p>
+            optio odio, unde possimus omnis natus ducimus. Molestias, ipsa?</p>
         </div>
       </div>
       <div class="iprc">
@@ -251,7 +269,7 @@
         <div class="scho-content">
           <h4>Diploma in Manufacturing Engineering</h4>
           <p class="ccc">Cupiditate a illum quas modi, dolore error. Maiores officia beatae aliquid delectus assumenda,
-            optio odio, unde possimus omnis natus ducimus.  Molestias, ipsa?</p>
+            optio odio, unde possimus omnis natus ducimus. Molestias, ipsa?</p>
         </div>
       </div>
     </div>
@@ -279,7 +297,7 @@
         <div class="scho-content">
           <h4>Diploma in Manufacturing Engineering</h4>
           <p class="ccc">Cupiditate a illum quas modi, dolore error. Maiores officia beatae aliquid delectus assumenda,
-            optio odio, unde possimus omnis natus ducimus.  Molestias, ipsa?</p>
+            optio odio, unde possimus omnis natus ducimus. Molestias, ipsa?</p>
         </div>
       </div>
       <div class="iprc">
@@ -290,7 +308,7 @@
         <div class="scho-content">
           <h4>Diploma in Manufacturing Engineering</h4>
           <p class="ccc">Cupiditate a illum quas modi, dolore error. Maiores officia beatae aliquid delectus assumenda,
-            optio odio, unde possimus omnis natus ducimus.  Molestias, ipsa?</p>
+            optio odio, unde possimus omnis natus ducimus. Molestias, ipsa?</p>
         </div>
       </div>
     </div>
@@ -325,30 +343,33 @@
     <div class="sec5">
       <h1>Blog</h1>
       <p>Maiores officia beatae aliquid delectus assumenda,<br> optio odio, unde possimus omnis natus </p>
-      <div class="container-service">
+      <div class="container-service" id="container-blog">
         <div class="BLOG-LISTS">
-          <img src="/my-brand/image/Image (8).png" alt="web" class="web-image">
+          <img src="/my-brand/image/Image (8).png" alt="web" class="web-image dg">
 
           <h3 class="web-development">Web Development</h3>
-          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam consequuntur id. At.</p>
+          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam
+            consequuntur id. At.</p>
           <br>
           <a href="learn-more">Learn-more></a>
         </div>
 
         <div class="BLOG-LISTS">
-          <img src="/my-brand/image/Image (2).png" alt="web" class="web-image">
+          <img src="/my-brand/image/Image (2).png" alt="web" class="web-image dg">
 
           <h3 class="web-development">Web Development</h3>
-          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam consequuntur id. At. </p>
+          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam
+            consequuntur id. At. </p>
           <br>
           <a href="learn-more">Learn-more></a>
         </div>
 
         <div class="BLOG-LISTS">
-          <img src="/my-brand/image/Image (9).png" alt="web" class="web-image">
+          <img src="/my-brand/image/Image (9).png" alt="web" class="web-image dg">
 
           <h3 class="web-development">Web Development</h3>
-          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam consequuntur id. At.</p>
+          <p class="blog-p">reprehenderit earum ullam blanditiis delectus at! Ex quibusdam laborum laboriosam
+            consequuntur id. At.</p>
           <br>
           <a href="learn-more">Learn-more></a>
         </div>
@@ -361,16 +382,24 @@
   <section class="form-section">
     <div class="form">
       <h1>Leave us your info</h1>
-      <form>
-        <label>Your Full Name ( Required)</label>
-        <input type="text">
-        <label>Your Email ( Required)</label>
-        <input type="text">
+      <form onsubmit="return validateForm()" id="sss">
+        <small id="nameErrorsssss"></small>
+        <label>Your Full Name  </label>
+        <input type="text" id="fullName" onkeyup="return changes()" >
+        <small id="nameErrors"></small>
+        <label>Your Email </label>
+        <input type="text" id="email" onkeyup="return changes()">
+        <small id="nameErrorss"></small>
         <label>Subject</label>
-        <input type="text">
-        <label>Message</label>
-        <textarea></textarea>
-        <input type="submit" class="submit-input" value="SEND MESSAGE">
+        <input type="text" id="subject" onkeyup="return changes()"  >
+        <small id="nameErrorsss"></small>
+        <div class="sha"> 
+          <label>Message</label>
+        <textarea id="message" type="text" onkeyup="return changes()" ></textarea>
+        <small id="nameErrorssss"></small>
+      </div>
+       
+        <button class="submit">Send Message</button>
       </form>
     </div>
     <div class="form-right">
@@ -396,6 +425,7 @@
     <h1 class="footer-text">2021 all rights reserved ojjomedia</h1>
   </footer>
   </section>
+  <script src="index.js"></script>
 </body>
 
 </html>
