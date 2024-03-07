@@ -183,11 +183,27 @@ const bloglist = document.querySelectorAll('.BLOG-LISTS');
     for (let index = 0; index < getData.length; index++) {
         const blogCard =` <div class="BLOG-LISTS">
         <img src="${getData[index].image}" alt="web" class="web-image">
+        <div class="likesssss">
+            <div class="likes">
+            <div><i class='bx bx-like'></i></div>
+            <div><span>10 </span>likes</div>
+          </div>
+            <div class="unlikes">
+              <div><i class='bx bx-dislike' ></i></div>
+            <div><span>10 </span>unlikes</div>
+            </div>
+            <div class="comments">
+              <div><i class='bx bx-comment-dots' ></i>
+              </div>
+              <div><span>20</span>comments</div>
+            </div>
+          </div>
 
         <h3 class="web-development">${getData[index].title}</h3>
         <p class="blog-p">${getData[index].decsription}</p>
         <br>
         <a href="#" onclick ='viewBlog(${index})'>Learn-more></a>
+
       </div>`
     blogContainer.insertAdjacentHTML('beforeend',blogCard)
     }
@@ -203,4 +219,6 @@ function viewBlog (id) {
  window.location.href ='blog.html'
 
 }
+
+
 

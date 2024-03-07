@@ -29,7 +29,7 @@
       </div>
       <center>
         <img
-          src="/my-brand/image/profile.png"
+          src="./image/profile.png"
           alt="Profile Image"
           class="profile-image"
         />
@@ -60,7 +60,7 @@
        </div>
         
         <div class="add-blog-container">
-          <form class="blog-form" id="form" method="post" onsubmit="return validateForm">
+          <form class="blog-form" id="form" method="post" onsubmit="return validateForm" enctype="multipart/form-data">
             <small id="nameErrorsssss"></small>
             <label for="blogTitle">Title:</label>
             <div>
@@ -87,7 +87,7 @@
         </div>
           
             <center>
-              <input class="add-blog-final-btn"type="file" id="upload" Upload Image >
+              <input class="add-blog-final-btn"type="file" id="upload" name="image" Upload Image >
             </center>
             <center>
               <button class="upload-complete-btn" id="create">Add Blog</button>
@@ -188,26 +188,59 @@
         }
       }))
     
-// update
-      const searchParams = new URLSearchParams(window.location.search);
-    const updateId=searchParams.get('id');
-    if (updateId) {
-      updateButtons.style.display ='block'
-      create.style.display ='none'
+// // update
+//       const searchParams = new URLSearchParams(window.location.search);
+//     const updateId=searchParams.get('id');
+//     if (updateId) {
+//       updateButtons.style.display ='block'
+//       create.style.display ='none'
 
-    }
-    if(localStorage.getItem('newBlog')){
-      let storage = JSON.parse(localStorage.getItem('newBlog'))
-      // console.log(storage)
-      let singleBlog = storage[updateId]
-      // console.log(singleBlog)
-      if (singleBlog) {
-        console.log(singleBlog.title)
-        document.getElementById('blogTitle').value =singleBlog.title
-        editor1.setHTML(`${singleBlog.decsription}`)
+//     }
+//     if(localStorage.getItem('newBlog')){
+//       let storage = JSON.parse(localStorage.getItem('newBlog'))
+//       // console.log(storage)
+//       let singleBlog = storage[updateId]
+//       // console.log(singleBlog)
+//       if (singleBlog) {
+//         console.log(singleBlog.title)
+//         document.getElementById('blogTitle').value =singleBlog.title
+//         editor1.setHTML(`${singleBlog.decsription}`)
+//       }
+
+//     }
+const forms =document.querySelector('form')
+      const title = document.getElementById("blogTitle");
+      const description = document.getElementById("div_editor1");
+      const file = document.getElementById("upload")
+    forms.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
       }
+      const formData = new FormData()
+      formData.append("title", title.value);
+      formData.append("desc", description.value);
+      formData.append("image", file.files[0])
+      console.log(JSON.stringify(formData))
+      try {
+        const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs',{
+        method:'POST',
+        headers:{'Authorization':`Bearer ${token}`},
+        body: formData
+        })
+      if ( !res.ok){
+        throw new Error('enabled to post blog')
+      }
+      const resData = await res.json()
+      console.log(resData)
+    } catch (error) {
+    console.log({error:error.message})
+  }
+})
 
-    }
+
     </script>
   </body>
 </html>

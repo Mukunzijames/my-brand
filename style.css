@@ -99,7 +99,20 @@ main {
   flex-direction: column;
   align-items: center;
 }
-
+.likesssss{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.likes{
+  display: flex;
+}
+.unlikes {
+  display: flex;
+}
+.comments{
+  display: flex;
+}
 .social {
   display: flex;
   gap: 12px;
@@ -360,7 +373,7 @@ ul .Icons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 190px;
+  margin-left: 250px;
 }
 
 #educaton-container {
@@ -469,9 +482,9 @@ ul .Icons {
   padding-left: 10px;
   padding-right: 10px;
 }
-
 .BLOG-LISTS img {
   width: 100%;
+  height: 250px
 }
 
 .BLOG-LISTS {

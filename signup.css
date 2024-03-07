@@ -100,6 +100,40 @@ margin-left:  50px;
 .cnt {
   margin-left: 150px;
 }
+.loader{
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  transition: opacity 0.75s, visibility 0.75s;
+
+}
+.loader-hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+.loader::after{
+  content: "";
+  width: 80px;
+  height:80px;
+  border: 15px solid rgb(5, 5, 5);
+  border-top-color: #f4f4f4;
+  border-radius: 50%;
+  animation: loading 2s ease infinite;
+
+}
+@keyframes loading {
+  from {
+    transform:rotate(0turn);
+  }to{
+    transform:rotate(1turn);
+  }
+}
 
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {

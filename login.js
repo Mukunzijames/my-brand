@@ -1,3 +1,12 @@
+window.addEventListener('load',()=>{
+    const loader = document.querySelector(".loader")
+    loader.classList.add("loader-hidden")
+    loader.addEventListener('transitionend',()=>{
+        document.body.removeChild("loader")
+    })
+
+})
+
 function validateForm() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
@@ -61,3 +70,37 @@ function validatePassword(inputElement) {
       return true;
   }
 }
+
+const form = document.querySelector('form')
+form.addEventListener('submit', async(e)=>{
+   e.preventDefault()
+
+  const formData = new FormData(form)
+  const userData ={
+    email:formData.get('email'),
+    password:formData.get('password')
+  }
+  try {
+    const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/users/login',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(userData)
+    })
+    
+    if ( !res.ok){
+        throw new Error('unenabled to signup')
+    }
+  
+    const resData = await res.json()
+    console.log(resData)
+
+  const token = resData.token
+
+    localStorage.setItem('token',token)
+    console.log(resData)
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+
+})
