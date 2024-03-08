@@ -241,6 +241,46 @@ const forms =document.querySelector('form')
 })
 
 
+const formr =document.querySelector('form')
+      const titles = document.getElementById("blogTitle");
+      const descriptions = document.getElementById("div_editor1");
+      const files = document.getElementById("upload")
+    formr.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+      const _id =localStorage.getItem('_id')
+      if(!_id){
+        throw new Error('there no id')
+        return
+      }
+      const formData = new FormData()
+      formData.append("title", titles.value);
+      formData.append("desc", descriptions.value);
+      formData.append("image", files.files[0])
+      console.log(JSON.stringify(formData))
+      try {
+        const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs/'+_id,{
+        method:'PATCH',
+        headers:{'Authorization':`Bearer ${token}`},
+        body: formData
+        })
+      if ( !res.ok){
+        throw new Error('enabled to post blog')
+      }
+      const resData = await res.json()
+      console.log(resData)
+    } catch (error) {
+    console.log({error:error.message})
+  }
+})
+
+
+
+
 
 
 

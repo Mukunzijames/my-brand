@@ -91,7 +91,7 @@ const  getAll = async()=>{
             </div>
         </div>
         <div class="delete">
-         <div><i class='bx bx-trash'></i>${getData[index]._id}</div>
+         <div><i class='bx bx-trash'></i></div>
         </div>
         <div class="edit" id="reply">
             reply
