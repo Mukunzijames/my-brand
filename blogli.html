@@ -24,66 +24,7 @@
             <div class="ico"><i class='bx bx-chat'></i></div>
         </div>
         <div id="bloglists">
-            <!-- <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
-            <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
-            <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
-            <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
-            <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
-            <div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>how to make web template</div>
-                </div>
-                <div class="right">
-                    <div ><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
-                </div>
-            </div>
+           
             <div class="classs">
                 <div class="left">
                     <div class="check"><i class='bx bxs-check-circle'></i></div>
@@ -91,11 +32,11 @@
                 </div>
                 <div class="right">
                     <div><i class='bx bx-pencil'></i></div>
-                    <div><i class='bx bx-trash'></i></div>
+                    <div onclick="Delete(id)"><i class='bx bx-trash'></i></div>
                 </div>
             </div>
             </div>
-          </div> -->
+          </div> -
         </div>
       <script>
       let list = document.getElementById('bloglists');
@@ -110,16 +51,16 @@
         function addlist(arr){
             for (let i= 0; i< arr.length; i++) {
                 console.log(i)
-                const element = `<div class="classs">
-                <div class="left">
-                    <div class="check"><i class='bx bxs-check-circle'></i></div>
-                    <div>${arr[i].title}</div>
-                </div>
-                <div class="right">
-                    <div onclick="update(${i})"><i class='bx bx-pencil'></i></div>
-                    <div onclick="Delete(${i})"><i class='bx bx-trash'></i></div>
-                </div>
-            </div>`;
+            //     const element = `<div class="classs">
+            //     <div class="left">
+            //         <div class="check"><i class='bx bxs-check-circle'></i></div>
+            //         <div>${arr[i].title}</div>
+            //     </div>
+            //     <div class="right">
+            //         <div onclick="update(${i})"><i class='bx bx-pencil'></i></div>
+            //         <div onclick="Delete(${i})"><i class='bx bx-trash'></i></div>
+            //     </div>
+            // </div>`;
                list.insertAdjacentHTML("beforeend",element) 
                
             }
@@ -133,22 +74,66 @@
           });
             
         }
-        function Delete(id){
-            let trash = some
-            trash.splice(id,1)
-            console.log(id)
-        localStorage.setItem('newBlog', JSON.stringify(trash));
-        refleshList()
-        addlist(trash)
-        
-        }
-       
-        function update (id){
-        window.location.href =`dashboard.html?id=${id}`
-        // update
-        
-        }
-        
+
+
+const blogContainer =document.getElementById('bloglists')    
+const  getAll = async()=>{
+
+await  fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs')
+.then(res=>res.json())
+.then(result=>{
+console.log(result)
+
+let getData=result;
+// console.log(getData)
+for (let index = 0; index < getData.length; index++) {
+    const blogCard = `<div class="classs">
+                <div class="left">
+                    <div class="check"><i class='bx bxs-check-circle'></i></div>
+                    <div>${getData[index].title}</div>
+                </div>
+                <div class="right">
+                    <div onclick="update(${index})"><i class='bx bx-pencil'></i></div>
+                    <div onclick="Delete(${index})"><i class='bx bx-trash'></i></div>
+                </div>
+            </div>`
+ blogContainer.insertAdjacentHTML('beforeend',blogCard)
+
+
+}
+}
+)}
+getAll() 
+
+const Delete= async(_id)=>{
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+    const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+    console.log(_id)
+    try {
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}`,{
+        method:'DELETE',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to delete blog')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+}
+Delete()
+
       </script>
 </body>
 </html>

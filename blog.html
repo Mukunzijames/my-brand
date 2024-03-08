@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>blog</title>
     <link rel="stylesheet" href="blog.css">
 </head>
@@ -16,9 +17,13 @@
 
                 consectetur adipiscing elit.</h1>
                 <p id="Description" class="Description"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo rem quos vel, reiciendis minima ut necessitatibus nostrum similique officiis eveniet alias nobis aliquid? Modi veniam voluptatibus libero est aliquam laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex optio magni inventore aspernatur repellendus ullam pariatur quidem minus quis nisi iure, quas ab, perferendis voluptate placeat earum eius animi tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam vel natus illum fugiat repellat a quas dolore nulla quis nam, omnis esse nostrum non velit, at, blanditiis odit? Voluptatum, ipsa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione exercitationem assumenda ipsum accusantium nulla placeat minima sunt a excepturi dignissimos porro, beatae laudantium, nisi corrupti quibusdam aspernatur dolorem nesciunt dolores. sit amet consectetur adipisicing elit. Quam nesciunt similique, id eum reiciendis nemo. Ex vero temporibus natus. Eos ab ducimus iste hic repudiandae delectus accusamus vero temporibus voluptas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis beatae officiis quasi quis cum eum architecto vitae reiciendis, labore quaerat minus nesciunt. Aliquam dolores sint ab perspiciatis expedita, accusantium animi.</p>
-        </div>
-     
+        </div>    
     </div>
+    <div class="liking">
+        <div class="like"><i class='bx bx-like' onclick="like()"></i></div>
+         <div class="unlike"><i class='bx bx-dislike' onclick="unlike()"></i></div>
+
+     </div>
     <div class="recent">
         <div class="sectioncomment">
              <h1>Recent Comment</h1>
@@ -150,7 +155,62 @@ const getComment = async ()=>{
 })
 }
 getComment()
- 
+
+
+const like= async()=>{
+    try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+      console.log(_id)
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/likes`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+}
+const unlike= async()=>{
+    try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+      console.log(_id)
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+}
 
     </script>
 </body>

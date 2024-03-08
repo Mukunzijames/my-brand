@@ -244,7 +244,9 @@ const  getAll = async()=>{
         <a href="blog.html?id=${getData[index]._id}">Learn-more></a>
 
       </div>`
-    blogContainer.insertAdjacentHTML('beforeend',blogCard)
+     blogContainer.insertAdjacentHTML('beforeend',blogCard)
+  
+   
 }
 }
     )}
@@ -278,7 +280,6 @@ form.addEventListener('submit', async(e)=>{
   }
 
 })
-
 
 
 
