@@ -225,11 +225,11 @@ const  getAll = async()=>{
         <div class="likesssss">
             <div class="likes">
             <div><i class='bx bx-like'></i></div>
-            <div><span>10 </span>likes</div>
+            <div><span> ${getData[index].like} </span>likes</div>
           </div>
             <div class="unlikes">
               <div><i class='bx bx-dislike' ></i></div>
-            <div><span>10 </span>unlikes</div>
+            <div><span></span></div>
             </div>
             <div class="comments">
               <div><i class='bx bx-comment-dots' ></i>

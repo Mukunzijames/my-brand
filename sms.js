@@ -71,3 +71,40 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.clear()
     });
 });
+
+const message =document.getElementById('messageContainer')
+
+const  getAll = async()=>{
+
+    await  fetch('https://my-brand-be-2-iaek.onrender.com/api/messages')
+.then(res=>res.json())
+.then(result=>{
+    console.log(result)
+    let getData=result;
+    // console.log(getData)
+    for (let index = 0; index < getData.length; index++) {
+        const messageCard =`<div class="rgt">
+        <div class="card3">
+            <div class="rights">
+                <div class="bb"><i class='bx bx-envelope'></i></div>
+                <div class="sms">email</div>
+            </div>
+        </div>
+        <div class="delete">
+         <div><i class='bx bx-trash'></i>${getData[index]._id}</div>
+        </div>
+        <div class="edit" id="reply">
+            reply
+        </div>
+        <div class="toggle">
+            <div class="ds"><i class='bx bxs-toggle-left'></i></div>
+        </div>
+    </div> <div class="lefs">
+        <div class="lessss">${getData[index].name}</div>
+        <div class="rightsss">${getData[index].message}</div>
+    </div>`
+    message.insertAdjacentHTML('beforeend',messageCard)
+}
+}
+    )}
+    getAll()
