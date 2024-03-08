@@ -25,32 +25,32 @@
         </div>
         <div id="bloglists">
            
-            <div class="classs">
+            <!-- <div class="classs">
                 <div class="left">
                     <div class="check"><i class='bx bxs-check-circle'></i></div>
                     <div>how to make web template</div>
                 </div>
                 <div class="right">
                     <div><i class='bx bx-pencil'></i></div>
-                    <div onclick="Delete(id)"><i class='bx bx-trash'></i></div>
+                    <div onclick="Delete()"><i class='bx bx-trash'></i></div>
                 </div>
-            </div>
+            </div> -->
             </div>
           </div> -
         </div>
       <script>
-      let list = document.getElementById('bloglists');
-      let some = []
-        if (localStorage.getItem('newBlog')) {
-          let  savedData = localStorage.getItem('newBlog')
-          let getData=JSON.parse(savedData);
-          some = getData
-          addlist(some)
-        }
+    //   let list = document.getElementById('bloglists');
+    //   let some = []
+    //     if (localStorage.getItem('newBlog')) {
+    //       let  savedData = localStorage.getItem('newBlog')
+    //       let getData=JSON.parse(savedData);
+    //       some = getData
+    //       addlist(some)
+    //     }
         
-        function addlist(arr){
-            for (let i= 0; i< arr.length; i++) {
-                console.log(i)
+    //     function addlist(arr){
+    //         for (let i= 0; i< arr.length; i++) {
+    //             console.log(i)
             //     const element = `<div class="classs">
             //     <div class="left">
             //         <div class="check"><i class='bx bxs-check-circle'></i></div>
@@ -61,19 +61,19 @@
             //         <div onclick="Delete(${i})"><i class='bx bx-trash'></i></div>
             //     </div>
             // </div>`;
-               list.insertAdjacentHTML("beforeend",element) 
+        //        list.insertAdjacentHTML("beforeend",element) 
                
-            }
+        //     }
         
-        }
-        function refleshList (){
-          let refresh =  document.querySelectorAll('.classs')
-          refresh.forEach(raw => {
-            raw.remove()
+        // }
+        // function refleshList (){
+        //   let refresh =  document.querySelectorAll('.classs')
+        //   refresh.forEach(raw => {
+        //     raw.remove()
 
-          });
+        //   });
             
-        }
+        // }
 
 
 const blogContainer =document.getElementById('bloglists')    
@@ -84,7 +84,7 @@ await  fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs')
 .then(result=>{
 console.log(result)
 
-let getData=result;
+ let getData=result;
 // console.log(getData)
 for (let index = 0; index < getData.length; index++) {
     const blogCard = `<div class="classs">
@@ -93,29 +93,25 @@ for (let index = 0; index < getData.length; index++) {
                     <div>${getData[index].title}</div>
                 </div>
                 <div class="right">
-                    <div onclick="update(${index})"><i class='bx bx-pencil'></i></div>
-                    <div onclick="Delete(${index})"><i class='bx bx-trash'></i></div>
+                    <div onclick="update('${getData[index]._id}')"><i class='bx bx-pencil'></i></div>
+                    <div onclick="Delete('${getData[index]._id}')"><i class='bx bx-trash'></i></div>
                 </div>
             </div>`
  blogContainer.insertAdjacentHTML('beforeend',blogCard)
-
-
 }
 }
 )}
 getAll() 
 
 const Delete= async(_id)=>{
-    const searchParams = new URLSearchParams(window.location.search);
-     const _id=searchParams.get('id');
+    console.log(_id)
     const token = localStorage.getItem('token')
       if(!token){
         throw new Error('unauthorized')
         return
       }
-    console.log(_id)
     try {
-    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}`,{
+    const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs/'+_id,{
         method:'DELETE',
         headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
     })
@@ -132,8 +128,9 @@ const Delete= async(_id)=>{
   
 
 }
-Delete()
-
+const update = async(_id)=>{
+window.location.href='dashboard.html?id='+_id
+}
       </script>
 </body>
 </html>
