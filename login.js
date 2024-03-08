@@ -15,10 +15,10 @@ function validateForm() {
     document.getElementById('nameErrorsssss').innerText = "*All fields must be filled out";
     document.getElementById('nameErrorsssss').style ='color:red'      
     
-    return false;
-
+   return false;
 
 }
+
 }
 const emailInput = document.getElementById('email');
 emailInput.addEventListener('keyup', () => {
@@ -97,8 +97,9 @@ form.addEventListener('submit', async(e)=>{
   const token = resData.token
 
     localStorage.setItem('token',token)
+    
     console.log(resData)
-
+    
   } catch (error) {
     console.log({error:error.message})
   }

@@ -4,7 +4,8 @@
   font-family: Roboto;
 }
 body {
-    margin-left: 20px;
+   
+    margin-left: 50px;
     margin-right: 20px ;
 }
 
@@ -22,10 +23,7 @@ h1 {
 .dating {
     color: #ff9800;
 }
-.author img {
-    width: 40px;
-    height:55px;
-}
+
 .ndahiro {
     border-right: 3px solid black;
     margin-right: 4px;
@@ -37,11 +35,12 @@ h1 {
     padding-left: 4px;
 }
 .imago {
-    margin-top: 20px;
+    margin-top: 50px;
+    width: 80%;
 }
 .imago img {
     width: 100%;
-    height:500px;
+    height:600px;
     object-fit: cover;
 }
 .container {
@@ -50,14 +49,15 @@ h1 {
     justify-content: space-between;
 }
 .left {
-    width: 60%;
+    width: 80%;
+    font-size: large;
 }
 .right {
     width:30%
 }
 .card {
     display: flex;
-   
+ 
 }
 .card img {
         width: 75px;
@@ -79,6 +79,7 @@ h1 {
     display: flex;
     justify-content: space-between;
 }
+
 .recent-comment {
     display: flex;
     flex-direction: column;
@@ -121,7 +122,7 @@ label {
 }
 
 input {
-    width: 60vh;
+    width: 40vh;
     padding: 6px;
     margin-bottom: 16px;
     box-sizing: border-box;
@@ -166,6 +167,9 @@ button:hover {
     .signup-container {
         padding: 10px;
 
+    }
+    .imago{
+        width:100%;
     }
     .right {
         display: none;
@@ -266,6 +270,9 @@ body {
         width: 80%;
         margin-bottom: 30px;
     }
+    .imago{
+        width:100%;
+    }
     .imago img {
         width: 100%;
         height: 150px;
@@ -299,7 +306,9 @@ body {
     .author h4 {
     font-size: 10px;
     }
-    
+    .imago{
+        width:100%;
+    }
     button {
         background-color:#000000f3;
         color: white ;

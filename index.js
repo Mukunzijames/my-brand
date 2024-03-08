@@ -175,11 +175,50 @@ const bloglist = document.querySelectorAll('.BLOG-LISTS');
     
  }
    
- let  savedData =[]
- if (localStorage.getItem('newBlog')) {
-     savedData = localStorage.getItem('newBlog')
-    let getData=JSON.parse(savedData);
-    console.log(getData)
+//  let  savedData =[]
+//  if (localStorage.getItem('newBlog')) {
+//      savedData = localStorage.getItem('newBlog')
+//     let getData=JSON.parse(savedData);
+//     console.log(getData)
+//     for (let index = 0; index < getData.length; index++) {
+//         const blogCard =` <div class="BLOG-LISTS">
+//         <img src="${getData[index].image}" alt="web" class="web-image">
+//         <div class="likesssss">
+//             <div class="likes">
+//             <div><i class='bx bx-like'></i></div>
+//             <div><span>10</span>likes</div>
+//           </div>
+//             <div class="unlikes">
+//               <div><i class='bx bx-dislike' ></i></div>
+//             <div><span>10 </span>unlikes</div>
+//             </div>
+//             <div class="comments">
+//               <div><i class='bx bx-comment-dots' ></i>
+//               </div>
+//               <div><span>20</span>comments</div>
+//             </div>
+//           </div>
+
+//         <h3 class="web-development">${getData[index].title}</h3>
+//         <p class="blog-p">${getData[index].decsription}</p>
+//         <br>
+//         <a href="#" onclick ='viewBlog(${index})'>Learn-more></a>
+
+//       </div>`
+//     blogContainer.insertAdjacentHTML('beforeend',blogCard)
+//     }
+
+//   }
+
+
+const  getAll = async()=>{
+
+    await  fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs')
+.then(res=>res.json())
+.then(result=>{
+    console.log(result)
+    let getData=result;
+    // console.log(getData)
     for (let index = 0; index < getData.length; index++) {
         const blogCard =` <div class="BLOG-LISTS">
         <img src="${getData[index].image}" alt="web" class="web-image">
@@ -200,25 +239,47 @@ const bloglist = document.querySelectorAll('.BLOG-LISTS');
           </div>
 
         <h3 class="web-development">${getData[index].title}</h3>
-        <p class="blog-p">${getData[index].decsription}</p>
+        <p class="blog-p">${getData[index].desc}</p>
         <br>
-        <a href="#" onclick ='viewBlog(${index})'>Learn-more></a>
+        <a href="blog.html?id=${getData[index]._id}">Learn-more></a>
 
       </div>`
     blogContainer.insertAdjacentHTML('beforeend',blogCard)
-    }
+}
+}
+    )}
+    getAll()
 
+    const form = document.querySelector('form')
+form.addEventListener('submit', async(e)=>{
+   e.preventDefault()
+
+  const formData = new FormData(form)
+  const messageData ={
+    name:formData.get('name'),
+    email:formData.get('email'),
+    message:formData.get('message')
+  }
+  console.log(messageData)
+  try {
+    const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(messageData)
+    })
+    if ( !res.ok){
+        throw new Error('enabled to send message')
+    }
+    const resData = await res.json()
+    console.log(resData)
+
+  } catch (error) {
+    console.log({error:error.message})
   }
 
-function viewBlog (id) {
-  const fetching1 = JSON.parse(localStorage.getItem('newBlog'))
-//   console.log(fetching1[id])
+})
 
- localStorage.setItem('blog', JSON.stringify(fetching1[id]))
 
- window.location.href ='blog.html'
-
-}
 
 
 

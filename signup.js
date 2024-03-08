@@ -27,6 +27,7 @@ function validateForm() {
 
 
     alert("Form submitted successfully!");
+ window.location.href ='login.html'
     return true;
 }
 

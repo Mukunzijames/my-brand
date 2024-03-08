@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-    <h6>Blog</h6>
-    <h1>Lorem ipsum dolor sit amet,<br> 
-
-        consectetur adipiscing elit.</h1>
-
-    <div class="author">
-        <img src=".//image/profile.png" alt="profile" >
-        <h4 class="ndahiro">by Ndahiro James</h4>
-        <h4 class="published">published on november 14,2002</h4>
-        <h4 class="min"> 2 min read</h4>
-    </div>
     <div class="imago">
         <img src="./image/Rectangle 182.png" alt="" id="imago">
     </div>
@@ -26,28 +15,12 @@
             <h1 id="title">Lorem ipsum dolor sit amet, 
 
                 consectetur adipiscing elit.</h1>
-                <p id="Description"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo rem quos vel, reiciendis minima ut necessitatibus nostrum similique officiis eveniet alias nobis aliquid? Modi veniam voluptatibus libero est aliquam laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex optio magni inventore aspernatur repellendus ullam pariatur quidem minus quis nisi iure, quas ab, perferendis voluptate placeat earum eius animi tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam vel natus illum fugiat repellat a quas dolore nulla quis nam, omnis esse nostrum non velit, at, blanditiis odit? Voluptatum, ipsa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione exercitationem assumenda ipsum accusantium nulla placeat minima sunt a excepturi dignissimos porro, beatae laudantium, nisi corrupti quibusdam aspernatur dolorem nesciunt dolores. sit amet consectetur adipisicing elit. Quam nesciunt similique, id eum reiciendis nemo. Ex vero temporibus natus. Eos ab ducimus iste hic repudiandae delectus accusamus vero temporibus voluptas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis beatae officiis quasi quis cum eum architecto vitae reiciendis, labore quaerat minus nesciunt. Aliquam dolores sint ab perspiciatis expedita, accusantium animi.</p>
+                <p id="Description" class="Description"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo rem quos vel, reiciendis minima ut necessitatibus nostrum similique officiis eveniet alias nobis aliquid? Modi veniam voluptatibus libero est aliquam laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex optio magni inventore aspernatur repellendus ullam pariatur quidem minus quis nisi iure, quas ab, perferendis voluptate placeat earum eius animi tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam vel natus illum fugiat repellat a quas dolore nulla quis nam, omnis esse nostrum non velit, at, blanditiis odit? Voluptatum, ipsa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione exercitationem assumenda ipsum accusantium nulla placeat minima sunt a excepturi dignissimos porro, beatae laudantium, nisi corrupti quibusdam aspernatur dolorem nesciunt dolores. sit amet consectetur adipisicing elit. Quam nesciunt similique, id eum reiciendis nemo. Ex vero temporibus natus. Eos ab ducimus iste hic repudiandae delectus accusamus vero temporibus voluptas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis beatae officiis quasi quis cum eum architecto vitae reiciendis, labore quaerat minus nesciunt. Aliquam dolores sint ab perspiciatis expedita, accusantium animi.</p>
         </div>
-        <div class="right">
-            <h6>popular post</h6>
-            <div class="card cast">
-                <img src="./image/profile.png" alt="profile" >
-                <div class="title">
-                    <h5>product</h5>
-                    <p> Eum officia voluptas, quas ex obcaecati perferendis culpa vitae sed! Saepe inventore</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./image/profile.png" alt="profile" >
-                <div class="title">
-                    <h5>product</h5>
-                    <p> Eum officia voluptas, quas ex obcaecati perferendis culpa vitae sed! Saepe inventore</p>
-                </div>
-            </div>
-        </div>
+     
     </div>
     <div class="recent">
-        <div>
+        <div class="sectioncomment">
              <h1>Recent Comment</h1>
         <div class="recent-comment">
      <div>
@@ -64,18 +37,6 @@
        </div>
    </div>
 </div>      
-        <div class="popular-blog">
-            <h1>Good or bad, we’d love to hear your thoughts. Find us on Twitter (@twitter)</h1>
-            <h5>here there're some related article you may find interesting</h5>
-            <div class="blog-card">
-                <img src="./image/Rectangle 182.png" alt="profile" >
-                <div>
-                    <h1> Asperiores saepe quasi illo, quibusdam ut quae quo sunt ipsum, delectus dolor</h1>
-                    <p> Deserunt autem iusto fuga nisi saepe ipsa magni amet, aspernatur atque harum quasi, eveniet vel exercitationem, quos voluptate architecto numquam repellendus ullam.</p>
-                </div>
-            </div>
-
-        </div>
     </div>  
     <div class="signup-container">
       <div class="heading-h">
@@ -83,13 +44,13 @@
         <p>receive new holiday and special from James</p>
       </div>
       <form action="#" method="post">
-        <label for="Username">Username:</label>
-        <input type="username" id="username" name="username" required />
-        <label for="email">Email:</label>
+        <label for="Username">name:</label>
+        <input type="username" id="username" name="name" required />
+        <label for="email">email:</label>
         <input type="email" id="email" name="email" required />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <label for="password">comment:</label>
+        <input type="text" id="password" name="comment" required />
 
         <button type="submit">Send Comment</button>
       </form>
@@ -99,13 +60,98 @@
     </div>
     <script>
 
-        if (localStorage.getItem('blog')) {
+        if (localStorage.getItem('_id')) {
             const fetchingData = JSON.parse(localStorage.getItem('blog'))
             console.log(fetchingData)
         document.getElementById('title').innerText =fetchingData.title;
-        document.getElementById('Description').innerHTML =fetchingData.decsription
+        document.getElementById('Description').innerHTML =fetchingData.desc
         document.getElementById('imago').setAttribute("src",fetchingData.image)
         }
+        const getBlog = async()=>{
+            const searchParams = new URLSearchParams(window.location.search);
+             const _id=searchParams.get('id');
+            await  fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs/'+_id)
+.then(res=>res.json())
+.then(result=>{
+console.log(result)
+            const fetchingData = result
+            console.log(fetchingData)
+        document.getElementById('title').innerText =fetchingData.title;
+        document.getElementById('Description').innerHTML =fetchingData.desc
+        document.getElementById('imago').setAttribute("src",fetchingData.image)
+        
+})
+        }
+        getBlog()
+        const form = document.querySelector('form')
+form.addEventListener('submit', async(e)=>{
+   e.preventDefault()
+
+  const formData = new FormData(form)
+  const commentData ={
+    name:formData.get('name'),
+    email:formData.get('email'),
+    commentSent:formData.get('comment')
+  }
+  try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+        body:JSON.stringify(commentData)
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+})
+
+const getComment = async ()=>{
+    const searchParams = new URLSearchParams(window.location.search);
+    const _id=searchParams.get('id');
+    const token = localStorage.getItem('token')
+      if(!token){
+        throw new Error('unauthorized')
+        return
+      }
+    await  fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
+        method:'GET',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+.then(res=>res.json())
+.then(result=>{
+        const comment = document.querySelector('.sectioncomment')
+        let singleComment = ""
+         result.forEach(Element => {
+            singleComment = `
+            <div class="recent-comment">
+            <div>
+            <h5>${Element.name}</h5>
+            <h5 class="dating">17,december,2002</h5>
+            <h5>${Element.commentSent}</h5>
+             </div>
+            </div>`
+            comment.insertAdjacentHTML('beforeend',singleComment)
+         });
+})
+}
+getComment()
+ 
+
     </script>
 </body>
 </html>
