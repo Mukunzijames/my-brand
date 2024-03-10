@@ -12,7 +12,7 @@ body {
     padding-top: 20px;
     color: rgb(15, 14, 14);
     border: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* You can adjust the values as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .icon-container {
