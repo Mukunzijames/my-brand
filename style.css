@@ -481,6 +481,7 @@ ul .Icons {
   background-color: white;
   padding-left: 10px;
   padding-right: 10px;
+ 
 }
 .BLOG-LISTS img {
   width: 100%;
@@ -493,6 +494,11 @@ ul .Icons {
 
 .BLOG-LISTS p {
   all: unset;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .BLOG-LISTS a {

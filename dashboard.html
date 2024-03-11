@@ -50,7 +50,7 @@
     <div class="content">
       <div class="buttons">
         <button class="cars homes">Home</button>
-        <button class="cars logouts">Logout</button>
+        <button class="cars logouts" onclick="logout()">Logout</button>
       </div>
       <div class="blog-container">
         <h1 class="blog-title">Add Blogs</h1>
@@ -278,7 +278,10 @@ const formr =document.querySelector('form')
   }
 })
 
-
+const logout = async()=>{
+  window.location.href='index.html'
+  localStorage.clear()
+}
 
 
 

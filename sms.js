@@ -91,7 +91,7 @@ const  getAll = async()=>{
             </div>
         </div>
         <div class="delete">
-         <div><i class='bx bx-trash'></i></div>
+         <div onclick="Delete('${getData[index]._id}')"><i class='bx bx-trash'></i></div>
         </div>
         <div class="edit" id="reply">
             reply
@@ -108,3 +108,29 @@ const  getAll = async()=>{
 }
     )}
     getAll()
+
+    const Delete= async(_id)=>{
+        console.log(_id)
+        const token = localStorage.getItem('token')
+          if(!token){
+            throw new Error('unauthorized')
+            return
+          }
+        try {
+        const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/messages/'+_id,{
+            method:'DELETE',
+            headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+        })
+        if ( !res.ok){
+            throw new Error('unenabled to delete message')
+        }
+        const resData = await res.json()
+        console.log(resData)
+        window.location.reload()
+    
+      } catch (error) {
+        console.log({error:error.message})
+      }
+      
+    
+    }
