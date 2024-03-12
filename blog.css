@@ -143,9 +143,16 @@ button {
     transition: background-color 0.3s ease;
 }
 .liking{
-    font-size: 100px;
+    font-size: 40px;
     display: flex;
-    gap:30px;
+    gap:20px;
+    
+}
+.like:hover{
+    color: #ff9800;
+}
+.unlike:hover{
+    color: #ff9800;
 }
 a{
   text-decoration: none;

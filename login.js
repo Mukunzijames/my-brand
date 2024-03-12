@@ -13,12 +13,13 @@ function validateForm() {
   
   if (email === "" || password === "") {
     document.getElementById('nameErrorsssss').innerText = "*All fields must be filled out";
-    document.getElementById('nameErrorsssss').style ='color:red'      
+    document.getElementById('nameErrorsssss').style ='color:red'  
     
-   return false;
+   return true;
 
 }
-
+alert('Login Successfully')
+return true
 }
 const emailInput = document.getElementById('email');
 emailInput.addEventListener('keyup', () => {
@@ -97,6 +98,7 @@ form.addEventListener('submit', async(e)=>{
   const token = resData.token
 
     localStorage.setItem('token',token)
+    window.location.href ='dashboard.html'
     
     console.log(resData)
     

@@ -31,10 +31,9 @@ const toggleDarkMode = () => {
 function validateForm() {
     var fullName = document.getElementById('fullName').value;
     var email = document.getElementById('email').value;
-    var subject = document.getElementById('subject').value;
     var message = document.getElementById('message').value;
 
-    if (fullName === "" || email === "" || subject === "" || message === "") {
+    if (fullName === "" || email === "" || message === "") {
         document.getElementById('nameErrorsssss').innerText = "*All fields must be filled out";
         document.getElementById('sss').style.border = '1px solid red';
         return false;
@@ -53,7 +52,6 @@ function validateForm() {
     }else {
       sendingMessage()
     }
-    alert("Form submitted successfully!");
     return true;
 
 }
@@ -68,10 +66,7 @@ emailInput.addEventListener('keyup', () => {
     validateEmail(emailInput);
 });
 
-const subjectInput = document.getElementById('subject');
-subjectInput.addEventListener('keyup', () => {
-    validateSubject(subjectInput);
-});
+
 const textInput = document.getElementById('message');
 textInput.addEventListener('keyup', () => {
     validateMessage(textInput);

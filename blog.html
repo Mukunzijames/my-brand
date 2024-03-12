@@ -21,6 +21,7 @@
     </div>
     <div class="liking">
         <div class="like"><i class='bx bx-like' onclick="like()"></i></div>
+        <span></span>
          <div class="unlike"><i class='bx bx-dislike' onclick="unlike()"></i></div>
 
      </div>
@@ -81,10 +82,11 @@
 console.log(result)
             const fetchingData = result
             console.log(fetchingData)
+            document.querySelector('span').innerText=fetchingData.like
         document.getElementById('title').innerText =fetchingData.title;
         document.getElementById('Description').innerHTML =fetchingData.desc
         document.getElementById('imago').setAttribute("src",fetchingData.image)
-        
+
 })
         }
         getBlog()
@@ -103,8 +105,8 @@ form.addEventListener('submit', async(e)=>{
      const _id=searchParams.get('id');
      const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+        alert('you need to login')
+        window.location.href='login.html'
       }
     const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
         method:'POST',
@@ -130,8 +132,7 @@ const getComment = async ()=>{
     const _id=searchParams.get('id');
     const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+       
       }
     await  fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
         method:'GET',
@@ -163,8 +164,8 @@ const like= async()=>{
      const _id=searchParams.get('id');
      const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+       alert('unauthorized enter your credentials to continue')
+       window.location.href='login.html'
       }
       console.log(_id)
     const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/likes`,{
@@ -190,8 +191,8 @@ const unlike= async()=>{
      const _id=searchParams.get('id');
      const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+        alert('unauthorized enter your credentials to continue')
+       window.location.href='login.html'
       }
       console.log(_id)
     const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}`,{

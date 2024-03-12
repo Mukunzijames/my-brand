@@ -113,8 +113,8 @@ const  getAll = async()=>{
         console.log(_id)
         const token = localStorage.getItem('token')
           if(!token){
-            throw new Error('unauthorized')
-            return
+            alert('unauthorized first login')
+            window.location.href='login.html'
           }
         try {
         const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/messages/'+_id,{

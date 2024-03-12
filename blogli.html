@@ -8,6 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <dialog class="dialog">are you sure you want to delete <button id="yes">yes</button><button id="no">no</button></dialog>
     <div class="content">
         <div class="blog-container">
           <h1 class="blog-title">Blogs</h1>
@@ -105,29 +106,51 @@ getAll()
 
 const Delete= async(_id)=>{
     console.log(_id)
-    const token = localStorage.getItem('token')
+    const no =document.getElementById('no')
+    const yes =document.getElementById('yes')
+    const dialog =document.querySelector('dialog')
+    dialog.showModal()
+    no.addEventListener('click',()=>{
+        dialog.close()
+    })
+    yes.addEventListener('click',async()=>{
+        dialog.close()
+        const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+         alert('you did not login')
+        window.location.href='login.html'
       }
     try {
     const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs/'+_id,{
         method:'DELETE',
         headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
     })
+    .then((res)=>{
+        if (res.status===200){
+            window.location.reload()
+
+        }else
+        if(res.status===401){
+            return alert('unauthorized')
+        }
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
     if ( !res.ok){
         throw new Error('unenabled to delete blog')
-    }
-    const resData = await res.json()
-    console.log(resData)
-    window.location.reload()
 
+    }
+  
   } catch (error) {
     console.log({error:error.message})
   }
   
+    })
+
 
 }
+
 const update = async(_id)=>{
 window.location.href='dashboard.html?id='+_id
 localStorage.setItem("_id",_id)

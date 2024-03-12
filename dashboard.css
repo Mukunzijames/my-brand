@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
+    cursor: pointer;
 }
 
 .sidebar {
@@ -13,6 +14,7 @@ body {
     color: rgb(15, 14, 14);
     border: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    cursor: pointer;
 }
 
 .icon-container {
@@ -52,9 +54,9 @@ li {
     cursor: pointer;
 }
  
-li.active {
+/* li.active {
     background-color: #ff9800;
-}
+} */
 
 .application {
     font-weight: bold;
@@ -65,6 +67,12 @@ li.active {
     padding: 20px;
    
 }
+.logouts:hover{
+    color: white;
+    background-color: #ff9800;
+    cursor: pointer;
+}
+
 #update {
     margin-right: 240px;
 }
@@ -94,3 +102,6 @@ li.active {
     width: 100%;
     overflow-x: scroll;
 }
+
+li:hover{
+background-color: #ff9800;}
