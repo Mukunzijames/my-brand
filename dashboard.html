@@ -36,13 +36,13 @@
       </center>
       <ul>
         <li>Dashboard</li>
-        <li class="active">Blogs</li>
+        <li class="active"><a href="blogli.html">Blogs</a></li>
         <li>Portfolio</li>
         <li>My Service</li>
         <li class="application">Application</li>
         <li><i class="material-icons">calendar_today</i> Calendar</li>
         <li><i class="material-icons">contacts</i> Contact</li>
-        <li><i class="material-icons">inbox</i><a href="sms.html">Mailbox</a> </li>
+        <li class="mail"><i class="material-icons">inbox</i><a href="sms.html">Mailbox</a> </li>
         <li><i class="material-icons">assignment</i> Tasks</li>
       </ul>
     </div>
@@ -55,7 +55,7 @@
       <div class="blog-container">
         <h1 class="blog-title">Add Blogs</h1>
         <div class="buts">
-          <button class="add-blog-btn"><a href="blogli.html">20 Blogs</a></button>
+          <button class="add-blog-btn"><a href="blogli.html">Blogs</a></button>
         <button class="add-blog-btn"> +Add Blogs</button>
        </div>
         
@@ -216,8 +216,8 @@ const forms =document.querySelector('form')
       e.preventDefault();
       const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+       alert('unauthorized please login to continue')
+       window.location.href='login.html'
       }
       const formData = new FormData()
       formData.append("title", title.value);
@@ -235,6 +235,9 @@ const forms =document.querySelector('form')
       }
       const resData = await res.json()
       console.log(resData)
+      alert('posting blog successful')
+      window.location.reload()
+
     } catch (error) {
     console.log({error:error.message})
   }

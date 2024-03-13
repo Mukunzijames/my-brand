@@ -505,7 +505,9 @@ ul .Icons {
   text-decoration: none;
   color: #ffb400;
 }
-
+.BLOG-LISTS a:hover {
+  text-decoration: underline;
+}
 .form-section {
   width: calc(100% - 410px);
   margin-left: 300px;

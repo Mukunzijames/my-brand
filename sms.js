@@ -111,26 +111,39 @@ const  getAll = async()=>{
 
     const Delete= async(_id)=>{
         console.log(_id)
-        const token = localStorage.getItem('token')
-          if(!token){
-            alert('unauthorized first login')
-            window.location.href='login.html'
-          }
-        try {
-        const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/messages/'+_id,{
-            method:'DELETE',
-            headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
-        })
-        if ( !res.ok){
-            throw new Error('unenabled to delete message')
-        }
-        const resData = await res.json()
-        console.log(resData)
-        window.location.reload()
+        const no =document.getElementById('no')
+        const yes =document.getElementById('yes')
+        const dialog =document.querySelector('dialog')
+         dialog.showModal()
+         no.addEventListener('click',()=>{
+         dialog.close()
+    })
+    yes.addEventListener('click',async()=>{
+        dialog.close()
     
-      } catch (error) {
-        console.log({error:error.message})
+        const token = localStorage.getItem('token')
+        if(!token){
+          alert('unauthorized first login')
+          window.location.href='login.html'
+        }
+      try {
+      const res = await fetch('https://my-brand-be-2-iaek.onrender.com/api/messages/'+_id,{
+          method:'DELETE',
+          headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+      })
+      if ( !res.ok){
+          throw new Error('unenabled to delete message')
       }
+      const resData = await res.json()
+      console.log(resData)
+      window.location.reload()
+  
+    } catch (error) {
+      console.log({error:error.message})
+    }
+    
+    })
+        
       
     
     }
