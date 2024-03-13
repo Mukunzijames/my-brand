@@ -252,8 +252,8 @@ const formr =document.querySelector('form')
       e.preventDefault();
       const token = localStorage.getItem('token')
       if(!token){
-        throw new Error('unauthorized')
-        return
+       alert('unauthorized please login to continue')
+       window.location.href='login.html'
       }
       const _id =localStorage.getItem('_id')
       if(!_id){
