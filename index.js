@@ -229,7 +229,7 @@ const  getAll = async()=>{
             <div class="comments">
               <div><i class='bx bx-comment-dots' ></i>
               </div>
-              <div><span>20</span>comments</div>
+              <div><span></span>comments</div>
             </div>
           </div>
 
