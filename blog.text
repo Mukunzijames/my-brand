@@ -1,0 +1,146 @@
+ if (localStorage.getItem('_id')) {
+            const fetchingData = JSON.parse(localStorage.getItem('blog'))
+            console.log(fetchingData)
+        document.getElementById('title').innerText =fetchingData.title;
+        document.getElementById('Description').innerHTML =fetchingData.desc
+        document.getElementById('imago').setAttribute("src",fetchingData.image)
+        }
+        const getBlog = async()=>{
+            const searchParams = new URLSearchParams(window.location.search);
+             const _id=searchParams.get('id');
+            await  fetch('https://my-brand-be-2-iaek.onrender.com/api/blogs/'+_id)
+.then(res=>res.json())
+.then(result=>{
+console.log(result)
+            const fetchingData = result
+            console.log(fetchingData)
+            document.querySelector('span').innerText=fetchingData.like
+        document.getElementById('title').innerText =fetchingData.title;
+        document.getElementById('Description').innerHTML =fetchingData.desc
+        document.getElementById('imago').setAttribute("src",fetchingData.image)
+
+})
+        }
+        getBlog()
+        const form = document.querySelector('form')
+form.addEventListener('submit', async(e)=>{
+   e.preventDefault()
+
+  const formData = new FormData(form)
+  const commentData ={
+    name:formData.get('name'),
+    email:formData.get('email'),
+    commentSent:formData.get('comment')
+  }
+  try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+        alert('you need to login')
+        window.location.href='login.html'
+      }
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+        body:JSON.stringify(commentData)
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+})
+
+const getComment = async ()=>{
+    const searchParams = new URLSearchParams(window.location.search);
+    const _id=searchParams.get('id');
+    const token = localStorage.getItem('token')
+      if(!token){
+       
+      }
+    await  fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/comments`,{
+        method:'GET',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+.then(res=>res.json())
+.then(result=>{
+        const comment = document.querySelector('.sectioncomment')
+        let singleComment = ""
+         result.forEach(Element => {
+            singleComment = `
+            <div class="recent-comment">
+            <div>
+            <h5>${Element.name}</h5>
+            <h5 class="dating">17,december,2002</h5>
+            <h5>${Element.commentSent}</h5>
+             </div>
+            </div>`
+            comment.insertAdjacentHTML('beforeend',singleComment)
+         });
+})
+}
+getComment()
+
+
+const like= async()=>{
+    try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+       alert('unauthorized enter your credentials to continue')
+       window.location.href='login.html'
+      }
+      console.log(_id)
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}/likes`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+}
+const unlike= async()=>{
+    try {
+    const searchParams = new URLSearchParams(window.location.search);
+     const _id=searchParams.get('id');
+     const token = localStorage.getItem('token')
+      if(!token){
+        alert('unauthorized enter your credentials to continue')
+       window.location.href='login.html'
+      }
+      console.log(_id)
+    const res = await fetch(`https://my-brand-be-2-iaek.onrender.com/api/blogs/${_id}`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    })
+    if ( !res.ok){
+        throw new Error('unenabled to add comment')
+    }
+    const resData = await res.json()
+    console.log(resData)
+    window.location.reload()
+
+  } catch (error) {
+    console.log({error:error.message})
+  }
+  
+
+}
