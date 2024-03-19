@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <!-- React CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <!-- Babel CDN for JSX transpilation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- Axios CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    const App = () => {
+        const [blogs, setBlogs] = React.useState([]);
+
+        React.useEffect(() => {
+            getAllBlogs();
+        }, []);
+
+        const getAllBlogs = async () => {
+            try {
+                const response = await axios.get('https://my-brand-be-2-iaek.onrender.com/api/blogs');
+                const result = response.data;
+                console.log(result);
+                setBlogs(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        return (
+            <div>
+                {blogs.map(blog => (
+                    <div key={blog._id} className="BLOG-LISTS">
+                        <img src={blog.image} alt="web" className="web-image"/>
+                        <div className="likesssss">
+                            <div className="likes">
+                                <div><i className='bx bx-like'></i></div>
+                                <div><span>{blog.like}</span>likes</div>
+                            </div>
+                            <div className="unlikes">
+                                <div><i className='bx bx-dislike'></i></div>
+                                <div><span></span></div>
+                            </div>
+                            <div className="comments">
+                                <div><i className='bx bx-comment-dots'></i></div>
+                                <div><span></span>comments</div>
+                            </div>
+                        </div>
+                        <h3 className="web-development">{blog.title}</h3>
+                        <p className="blog-p">{blog.desc}</p>
+                        <br/>
+                        <a href={`blog.html?id=${blog._id}`}>Learn More</a>
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    ReactDOM.render(<App/>, document.getElementById('root'));
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+Message Virgile Ndayambaje
+
+
+
+
+
+
+
+
+

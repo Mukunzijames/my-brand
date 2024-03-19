@@ -368,7 +368,7 @@
           <br>
           <a href="learn-more">Learn-more></a>
         </div>
-
+<!-- 
         <div class="BLOG-LISTS">
           <img src="./image/Image (2).png" alt="web" class="web-image dg">
 
@@ -377,9 +377,9 @@
             consequuntur id. At. </p>
           <br>
           <a href="learn-more">Learn-more></a>
-        </div>
+        </div> -->
 
-        <div class="BLOG-LISTS">
+        <!-- <div class="BLOG-LISTS">
           <img src="./image/Image (9).png" alt="web" class="web-image dg">
 
           <h3 class="web-development">Web Development</h3>
@@ -387,7 +387,7 @@
             consequuntur id. At.</p>
           <br>
           <a href="learn-more">Learn-more></a>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -437,7 +437,44 @@
     <h1 class="footer-text">2021 all rights reserved ojjomedia</h1>
   </footer>
   </section>
-  <script src="index.js"></script>
+  <script>const hamburgerMenu = document.getElementById('hamburger-menu');
+    const cancelButton = document.getElementById('cancel-icon');
+    const menuItems = document.getElementsByClassName('menu')[0];
+    var editor1 = new RichTextEditor("#message");
+    
+    
+    const reveal = () => {
+        hamburgerMenu.style.display = 'none';
+        cancelButton.style.display = 'block';
+        menuItems.style.display = 'grid';
+    };
+    
+    const hide = () => {
+        hamburgerMenu.style.display = 'block';
+        cancelButton.style.display = 'none';
+        menuItems.style.display = 'none';
+    };
+    
+    hamburgerMenu.addEventListener('click', reveal);
+    cancelButton.addEventListener('click', hide);
+    
+    const bodyEl = document.querySelector('body')
+    const homeEl = document.querySelector('.home')
+    
+    const toggleDarkMode = () => {
+        bodyEl.classList.toggle('dark-body')
+        homeEl.classList.toggle('home-dark')
+    }
+    </script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.js"
+    crossorigin="anonymous"
+  ></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script type="text/babel" src="index.js">   </script>
 </body>
 
 </html>
